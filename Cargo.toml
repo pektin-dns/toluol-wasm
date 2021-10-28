@@ -28,7 +28,6 @@ wee_alloc = { version = "0.4.5", optional = true }
 
 toluol = "1.0.1"
 getrandom = { version = "0.2", features = ["js"] }
-base64 = "0.13"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.13"
@@ -36,3 +35,4 @@ wasm-bindgen-test = "0.3.13"
 [profile.release]
 # Tell `rustc` to optimize for small code size.
 opt-level = "s"
+lto = true

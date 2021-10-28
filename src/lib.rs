@@ -18,7 +18,7 @@ pub fn init_panic_hook() {
 }
 
 #[wasm_bindgen]
-pub fn query(domain: &str, qtype: &str) -> Vec<u8> {
+pub fn new_query(domain: &str, qtype: &str) -> Vec<u8> {
     return DnsMessage::new_query(
         domain,
         DnsType::from_str(qtype).unwrap(),
