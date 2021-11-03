@@ -1,11 +1,11 @@
-image: docker:latest
-
 stages:
     - mirror
     - publish
 
 publish:
     stage: publish
+    image: docker:latest
+
     script:
         #publish to npm
         - bash start-build.sh
@@ -14,7 +14,7 @@ publish:
         - npm publish --verbose --access public
 mirror:
     stage: mirror
-
+    image: node:latest
     script:
         #github
         - USERNAME=pektin-dolly
