@@ -8,7 +8,7 @@ publish:
 
     script:
         #publish to npm
-        - bash start-build.sh
+        - sh start-build.sh
         - cd pkg
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
         - npm publish --verbose --access public
