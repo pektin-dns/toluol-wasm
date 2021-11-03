@@ -8,12 +8,13 @@ publish:
     stage: publish
     script:
         #publish to npm
-        - bash build.sh
+        - bash start-build.sh
         - cd pkg
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
         - npm publish --verbose --access public
 mirror:
     stage: mirror
+
     script:
         #github
         - USERNAME=pektin-dolly
