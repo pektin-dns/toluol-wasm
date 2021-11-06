@@ -28,5 +28,6 @@ publish:
         - wasm-opt -Oz -o pkg/toluol_wasm_bg.wasm pkg/toluol_wasm_bg.wasm
         - du -hs pkg/
         - cd pkg
+        - sed -i "s|toluol-wasm|@pektin/toluol-wasm|g" package.json
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
         - npm publish --verbose --access public
