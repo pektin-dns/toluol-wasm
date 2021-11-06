@@ -24,9 +24,8 @@ publish:
     image: pektin/rust-wasm-builder
     script:
         #publish to npm
-        - ls -l
         - wasm-pack build
-        - wasm-opt -Oz -o pkg/wasm_dns_bg.wasm pkg/wasm_dns_bg.wasm
+        - wasm-opt -Oz -o pkg/toluol-wasm_bg.wasm pkg/toluol-wasm_bg.wasm
         - du -hs pkg/
         - cd pkg
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
