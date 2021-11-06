@@ -25,7 +25,7 @@ publish:
     script:
         #publish to npm
         - wasm-pack build
-        - wasm-opt -Oz -o pkg/toluol-wasm_bg.wasm pkg/toluol-wasm_bg.wasm
+        - wasm-opt -Oz -o pkg/toluol_wasm_bg.wasm pkg/toluol_wasm_bg.wasm
         - du -hs pkg/
         - cd pkg
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc

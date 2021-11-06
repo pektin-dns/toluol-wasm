@@ -1,3 +1,3 @@
 wasm-pack build
-wasm-opt -Oz -o pkg/wasm_dns_bg.wasm pkg/wasm_dns_bg.wasm
+wasm-opt -Oz -o pkg/toluol_wasm_bg.wasm pkg/toluol_wasm_bg.wasm
 du -hs pkg/
