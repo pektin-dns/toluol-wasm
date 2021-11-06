@@ -4,12 +4,12 @@ stages:
 
 publish:
     stage: publish
-    image: docker:latest
-
+    image: pektin/rust-wasm-builder
     script:
         #publish to npm
-        - mkdir pkg
-        - sh start-build.sh
+        - wasm-pack build
+        - wasm-opt -Oz -o pkg/wasm_dns_bg.wasm pkg/wasm_dns_bg.wasm
+        - du -hs pkg/
         - cd pkg
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
         - npm publish --verbose --access public
