@@ -1,6 +1,6 @@
 [package]
 name = "toluol-wasm"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Paul Colin Hennig <8d_fvfmaa-o2wf_79aqig6g2ki6-09ffkeqmyo3d@y.gy>"]
 edition = "2018"
 

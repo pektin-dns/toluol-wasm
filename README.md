@@ -1,9 +1,9 @@
 # toluol-wasm
 
-Send DOH queries with the binary "content-type": "application/dns-message" and decode the response in the browser!
+Send DOH(DNS over Http(s)) queries with the binary "content-type": "application/dns-message" and decode the response in the browser!
 
 ```js
-import * as toluol from "../pkg/wasm_dns";
+import * as toluol from "@pektin/toluol-wasm";
 const f = fetch;
 
 const publicResolvers = [
