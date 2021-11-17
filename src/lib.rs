@@ -1,4 +1,4 @@
-mod utils;
+// mod utils;
 use std::str::FromStr;
 
 use wasm_bindgen::prelude::*;
@@ -35,7 +35,8 @@ pub fn new_query(domain: &str, qtype: &str) -> Vec<u8> {
 
 #[wasm_bindgen]
 pub fn parse_answer(answer: Vec<u8>) -> String {
-    DnsMessage::parse(&mut Cursor::new(&answer))
-        .expect("error parsing answer")
-        .to_string()
+    serde_json::to_string(
+        &DnsMessage::parse(&mut Cursor::new(&answer)).expect("error parsing answer"),
+    )
+    .expect("could format answer as json")
 }

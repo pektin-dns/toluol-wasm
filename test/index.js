@@ -1,4 +1,4 @@
-import * as toluol from "../pkg/wasm_dns";
+import * as toluol from "../pkg/toluol_wasm";
 const f = fetch;
 
 const publicResolvers = [
@@ -13,7 +13,9 @@ const resolver = publicResolvers[3];
 const post = async query => {
     const res = await f(`${resolver}/dns-query`, {
         headers: {
-            "content-type": "application/dns-message"
+            "content-type": "application/dns-message",
+            authorization:
+                "Basic Um8tdjZCcTFPcG9fWFNlSnJGWmxFak1sSF9FOjAzTFU4UTE5NUdBaEF1V0VzaF96YklfSGI3S2dOS3YxZXZFQ25hdjNTZHRYNkhEVUJfTWdlb09obnIxRlY1UVAyWTUyWUdjOWVWMG5LaUJFdUxwLTZyeVFtYVktVFA3di1HQjFUMVJ5bV9GNWZfc3RqUVlOUDgzZGVGU2JqbUpfdlJkNUh3"
         },
         credentials: "omit",
         method: "POST",
@@ -27,7 +29,9 @@ const get = async query => {
 
     const res = await f(`${resolver}/dns-query?dns=${q.replace(/=/g, "")}`, {
         headers: {
-            accept: "application/dns-message"
+            accept: "application/dns-message",
+            authorization:
+                "Basic Um8tdjZCcTFPcG9fWFNlSnJGWmxFak1sSF9FOjAzTFU4UTE5NUdBaEF1V0VzaF96YklfSGI3S2dOS3YxZXZFQ25hdjNTZHRYNkhEVUJfTWdlb09obnIxRlY1UVAyWTUyWUdjOWVWMG5LaUJFdUxwLTZyeVFtYVktVFA3di1HQjFUMVJ5bV9GNWZfc3RqUVlOUDgzZGVGU2JqbUpfdlJkNUh3"
         },
         credentials: "omit"
     });
@@ -37,7 +41,7 @@ const get = async query => {
 (async () => {
     toluol.init_panic_hook();
 
-    const query = toluol.new_query("y.gy", "A");
+    const query = toluol.new_query("y.gy", "NSEC");
 
     const res = await get(query);
     const parsed = toluol.parse_answer(res);
