@@ -1,13 +1,6 @@
-include:
-    - project: pektin/pektin-dist
-      ref: main
-      file:
-          - scripts/mirror.yml
-
 image: alpine
 
 stages:
-    - mirror
     - publish
 
 publish:
@@ -15,10 +8,16 @@ publish:
     image: pektin/rust-wasm-builder
     script:
         #publish to npm
-        - wasm-pack build
-        - wasm-opt -Oz -o pkg/toluol_wasm_bg.wasm pkg/toluol_wasm_bg.wasm
-        - du -hs pkg/
-        - cd pkg
-        - sed -i "s|toluol-wasm|@pektin/toluol-wasm|g" package.json
+        - bash build.sh
+        - "cd dist/bundler/"
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
         - npm publish --verbose --access public
+        - "cd -"
+        - "cd dist/web/"
+        - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+        - npm publish --verbose --access public
+        - "cd -"
+        - "cd dist/nodejs/"
+        - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+        - npm publish --verbose --access public
+        - "cd -"
