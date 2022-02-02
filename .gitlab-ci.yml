@@ -8,7 +8,7 @@ publish:
     image: pektin/rust-wasm-builder
     script:
         #publish to npm
-        - bash build.sh
+        - sh build.sh
         - "cd dist/bundler/"
         - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
         - npm publish --verbose --access public
